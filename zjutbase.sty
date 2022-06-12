@@ -1,0 +1,261 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{zjutbase}[2022/03/01 ZJUT BaseStyle]
+
+
+%%%%%%%% 默认字体 %%%%%%%%
+%% Microsoft
+\setmainfont[Mapping=tex-text]{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+%% Open source Nimbus
+% \setmainfont[Mapping=tex-text]{Nimbus Roman}
+% \setsansfont{Nimbus Sans}
+% \setmonofont{Nimbus Mono PS}
+\setCJKfamilyfont{zhsong}{思源宋体 CN}[
+  AutoFakeSlant = 0.2,
+  BoldItalicFeatures = {FakeSlant = 0.2}
+]
+\setCJKfamilyfont{zhhei}{思源黑体 CN}[
+  AutoFakeSlant = 0.2,
+  BoldItalicFeatures = {FakeSlant = 0.2}
+]
+\setCJKfamilyfont{zhfs}{Adobe Fangsong Std}[
+  AutoFakeBold = 3,
+  AutoFakeSlant = 0.2
+]
+\setCJKfamilyfont{zhkai}{Adobe Kaiti Std}[
+  AutoFakeBold = 3,
+  AutoFakeSlant = 0.2
+]
+\setCJKmainfont{思源宋体 CN}[
+  ItalicFont = Adobe Kaiti Std,
+  BoldFont = 思源黑体 CN-Bold,
+  BoldItalicFont = Adobe Kaiti Std,
+  BoldItalicFeatures = {FakeBold = 3, FakeSlant = 0.2}
+]
+\setCJKsansfont{思源黑体 CN}
+\setCJKmonofont{思源黑体 HW}
+
+
+%%%%%%%% 标题 %%%%%%%%
+\RequirePackage{titlesec}           % 控制标题的宏包
+
+
+%%%%%%%% 版式 %%%%%%%%
+% \RequirePackage{ragged2e}
+% \RequirePackage{showframe}          % 测试框架
+\RequirePackage{ulem}               % 下划线
+\RequirePackage{lipsum, zhlipsum}   % 乱数假文
+% \RequirePackage{color}            % 支持彩色
+\RequirePackage{xcolor}             % 代码高亮、文本颜色
+
+%% 断行容忍度、行末分词
+\tolerance=10000
+\hyphenpenalty=100
+% \emergencystretch=\maxdimen
+% \hbadness=10000
+
+
+%%%%%%%% 两倍行距 %%%%%%%%
+\RequirePackage{setspace}       % 间距，除了 linespread 还同时改公式、浮动体等
+\RequirePackage{needspace}
+%% 近似于 Word 中 1.5 倍行距
+\doublespacing
+
+
+%%%%%%%% 论文封面标题 %%%%%%%%
+%% 同时包含下划线、固定宽度、内容居中、自动换行
+%% https://tex.stackexchange.com/a/609433
+\RequirePackage{adjustbox}
+\newlength\MyHeight
+\newcommand\MysPrevDepth{}%
+\newcommand\UnderlineCentered[3]{%
+  \begin{adjustbox}{minipage=[t]{\dimexpr#1\relax},gstore totalheight=\MyHeight,margin=0pt}%
+  \centering\leavevmode#3\par\xdef\MysPrevDepth{\the\prevdepth}%
+  \end{adjustbox}%
+  \hspace*{-\dimexpr#1\relax}%
+  \begin{adjustbox}{minipage=[t][\MyHeight]{\dimexpr#1\relax},margin=0pt}%
+  \vphantom{Eg}\lower\dimexpr#2\relax\hbox to\hsize{\leaders\hrule\hfill\kern0pt}\par
+  \kern-\dimexpr#2\relax
+  \xleaders\vbox to\baselineskip {\vfill\hbox{\lower\dimexpr#2\relax\hbox to\hsize{\leaders\hrule\hfill\kern0pt}}\kern-\dimexpr#2\relax}\vfill
+  \kern\MysPrevDepth
+  \end{adjustbox}%
+}%
+
+
+%%%%%%%% 文档信息 %%%%%%%%
+\DeclareRobustCommand{\filltitle}{}
+\DeclareRobustCommand{\zjuttitle}[1]{\renewcommand{\filltitle}{#1}}
+\DeclareRobustCommand{\filltype}{}
+\DeclareRobustCommand{\zjuttype}[1]{\renewcommand{\filltype}{#1}}
+\DeclareRobustCommand{\fillauthor}{}
+\DeclareRobustCommand{\zjutauthor}[1]{\renewcommand{\fillauthor}{#1}}
+\DeclareRobustCommand{\fillmentor}{}
+\DeclareRobustCommand{\zjutmentor}[1]{\renewcommand{\fillmentor}{#1}}
+\DeclareRobustCommand{\fillmajor}{}
+\DeclareRobustCommand{\zjutmajor}[1]{\renewcommand{\fillmajor}{#1}}
+\DeclareRobustCommand{\fillcollege}{}
+\DeclareRobustCommand{\zjutcollege}[1]{\renewcommand{\fillcollege}{#1}}
+\DeclareRobustCommand{\fillyear}{}
+\DeclareRobustCommand{\zjutyear}[1]{\renewcommand{\fillyear}{#1}}
+\DeclareRobustCommand{\filldate}{}
+\DeclareRobustCommand{\zjutdate}[1]{\renewcommand{\filldate}{#1}}
+\renewcommand{\maketitle}{{%
+  \vspace*{0pt}
+  \begin{center}
+    \zihao{-2}\heiti\bfseries\linespread{1.5}
+    \makeatletter\@title\makeatother
+  \end{center}
+  % \vspace*{12pt}
+}}
+
+
+%%%%%%%% 封面 %%%%%%%%
+\RequirePackage{makebox}            % 文本框
+\newcommand\zjutpreface{%
+\begin{titlepage}
+  \vspace*{\fill}
+  \begin{center}\includegraphics[width=100mm]{zjutname}\end{center}
+  \vspace*{\fill}
+  \centerline{\zihao{1}{\filltype}}
+  \vspace*{\fill}
+  \centerline{\zihao{-2}\textbf{({\fillyear}届)}}
+  \vspace*{\fill}
+  \begin{center}\includegraphics[width=36mm]{zjutlogo}\end{center}
+  \begin{center}
+    \renewcommand\arraystretch{2}
+    \begin{tabular}{r c}
+      \zihao{2}论文题目 & \zihao{-2}\UnderlineCentered{8cm}{1.5mm}{\filltitle} \\
+      \zihao{4}作者姓名 & \zihao{4}\uline{\makebox[8cm][c]{\fillauthor}} \\
+      \zihao{4}指导教师 & \zihao{4}\uline{\makebox[8cm][c]{\fillmentor}} \\
+      \zihao{4}学科专业 & \zihao{4}\uline{\makebox[8cm][c]{\fillmajor}} \\
+      \zihao{4}所在学院 & \zihao{4}\uline{\makebox[8cm][c]{\fillcollege}} \\
+      \zihao{4}提交日期 & \zihao{4}\uline{\makebox[8cm][c]{\filldate}} \\
+    \end{tabular}
+  \end{center}
+  \vspace*{\fill}
+\end{titlepage}
+\null
+\thispagestyle{empty}%
+\addtocounter{page}{-1}%
+\newpage
+}
+
+
+%%%%%%%% 页眉页脚 %%%%%%%%
+\RequirePackage{fancyhdr}                       % 页眉和页脚
+\pagestyle{fancy}
+\setlength{\voffset}{6 mm}
+\setlength{\headheight}{5 mm}
+\setlength{\headsep}{3 mm}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.8pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[C]{\zihao{-5}\songti{浙江工业大学\filltype}}
+  \fancyfoot[C]{\zihao{-5}\thepage}
+}
+\fancyhf{}
+\fancyhead[C]{\zihao{-5}\songti{浙江工业大学\filltype}}
+\fancyfoot[C]{\zihao{-5}\thepage}
+
+
+%%%%%%%% 目录 %%%%%%%%
+\RequirePackage{titletoc}               % 控制目录的宏包
+\RequirePackage[hidelinks]{hyperref}    % 超链接，如目录
+\RequirePackage[titles]{tocloft}        % 目录格式
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % 章节虚线
+\renewcommand{\cftdotsep}{1.5}
+%%% 图目录
+\ctexset{ listfigurename = {图目录}, figurename = {图} }
+\renewcommand{\cftfigpresnum}{图}
+\addtolength{\cftfignumwidth}{1em}
+%%% 表目录
+\ctexset{ listtablename = {表目录}, tablename = {表} }
+\renewcommand{\cfttabpresnum}{表}
+\addtolength{\cfttabnumwidth}{1em}
+
+
+%%%%%%%% 引用格式 %%%%%%%%
+\def\equationautorefname{式}%
+\def\footnoteautorefname{脚注}%
+\def\itemautorefname{项}%
+\def\figureautorefname{图}%
+\def\tableautorefname{表}%
+\def\partautorefname{篇}%
+\def\appendixautorefname{附录}%
+\def\chapterautorefname{章}%
+\def\sectionautorefname{节}%
+\def\subsectionautorefname{小小节}%
+\def\subsubsectionautorefname{subsubsection}%
+\def\paragraphautorefname{段落}%
+\def\subparagraphautorefname{子段落}%
+\def\FancyVerbLineautorefname{行}%
+\def\theoremautorefname{定理}%
+% \renewcommand{\algorithmcfname}{\zjut@label@algname}
+% \setlength{\belowcaptionskip}{2mm}
+
+
+%%%%%%%% 表格 %%%%%%%%
+% \RequirePackage{tabularx}         % 自动设置表格的列宽
+\RequirePackage{booktabs}           % 表格上下粗横线 toprule
+\RequirePackage{diagbox}            %加载 diagbox 宏包之后可以绘制斜线表头
+\RequirePackage{multirow}           % 表格单元实现合并与分割
+\RequirePackage{makecell}           % 表格内换行 "\\"
+\RequirePackage{longtable}          % 支持跨页长表格。
+
+
+%%%%%%%% 图片 %%%%%%%%
+\RequirePackage{graphicx}               % 支持插图处理
+\graphicspath{{figures/}}  % 定义所有的eps文件在 figures 子目录下
+
+
+%%%%%%%% 图表标题 %%%%%%%%
+%% 五号=10.5pt，宋体，段前段后6磅，行间距1.5
+\RequirePackage{caption}                % 图表标题
+\RequirePackage{subcaption}             % 图表子标题
+% \RequirePackage[subfigure]{ccaption}    % 支持子图的中文标题
+\renewcommand{\footnotesize}{\zihao{-5}}
+\captionsetup{font={footnotesize}}
+\captionsetup{font={doublespacing}}
+\captionsetup{skip=6pt}
+\renewcommand{\thetable}{~\thechapter-\arabic{table}~}
+\renewcommand{\thefigure}{~\thechapter-\arabic{figure}~}
+\usepackage{bicaption}                  % 双语标题
+
+
+%%%%%%%% 公式 %%%%%%%%
+\RequirePackage{amsmath}                % AMSLaTeX宏包 用来排出更加漂亮的公式
+%% 公式编号格式，按照章节编号
+\numberwithin{equation}{chapter}
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
+
+
+%%%%%%%% 列表 %%%%%%%%
+\RequirePackage[inline]{enumitem} % 使用enumitem宏包,改变列表项的格式
+\newcounter{descriptcount}
+\newlist{enumdescript}{description}{2}
+\setlist[enumdescript,1]{%
+  before={\setcounter{descriptcount}{0}%
+    \renewcommand*\thedescriptcount{\arabic{descriptcount})}},
+  font=\itshape\stepcounter{descriptcount}\thedescriptcount~,
+  style=nextline,
+  leftmargin=1em
+}
+% 带圈数字
+\RequirePackage{pifont}
+\newcommand{\whiteding}[1]{\ding{\numexpr171+#1\relax}}
+
+
+%%%%%%%% 参考文献 %%%%%%%%
+\RequirePackage{gbt7714}        % GB/T 7714-2015 信息与文献 参考文献著录规则
+\bibliographystyle{gbt7714-numerical}
+%% 在目录中显示
+\renewcommand\bibsection{%
+  \ctexset{ chapter = { numbering = false } }
+  \chapter{\bibname}
+}
+
+
+%%%%%%%% 附录 %%%%%%%%
+\RequirePackage{appendix}        % 附录

@@ -1,0 +1,37 @@
+\documentclass[12pt]{zjutbook}
+
+\zjuttype{本科毕业设计说明书（论文）}
+\zjutyear{2022}
+\zjuttitle{不得超过30个汉字，论文题目过长可分两行书写}
+\zjutauthor{作者姓名}
+\zjutmentor{教师姓名}
+\zjutcollege{计算机科学与技术学院、软件学院}
+\zjutmajor{软件工程}
+\zjutdate{\number\year 年 \number\month 月 \number\day 日}
+
+\begin{document}
+%%%%%%%% 封面 %%%%%%%%
+\zjutpreface
+%%%%%%%% 摘要 %%%%%%%%
+\include{abstract.tex}
+%%%%%%%% 目录 %%%%%%%%
+\frontmatter
+\onehalfspacing
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+%%%%%%%% 正文 %%%%%%%%
+\mainmatter
+\doublespacing
+\include{main.tex}
+%%%%%% 参考文献 %%%%%%
+\backmatter
+\bibliography{bib.bib}
+%%%%%% 致谢 %%%%%%
+\include{acknowledgement.tex}
+%%%%%% 附录 %%%%%%
+\appendix
+\include{appendix.tex}
+\end{document}
