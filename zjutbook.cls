@@ -3,6 +3,7 @@
 
 \ProcessOptions\relax
 \LoadClass[12pt,oneside]{ctexbook}
+\RequirePackage{zjutbase}
 
 
 %%%%%%%% A4 纸张 %%%%%%%%
@@ -14,7 +15,6 @@
   bottom=37mm,
 ]{geometry}
 
-\RequirePackage{zjutbase}
 
 %%%%%%%% 标题 %%%%%%%%
 % \setcounter{secnumdepth}{3} % 自动编号最大深度 到subsubsection

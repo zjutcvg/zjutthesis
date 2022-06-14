@@ -4,13 +4,15 @@
 [2018年本科毕业设计说明书（论文）格式模板](http://www.cs.zjut.edu.cn/html/n6092.html)、
 [计算机学院本科毕业设计相关材料模板](http://www.cs.zjut.edu.cn/html/n4388.html)
 等官方模板格式为基础设计。
-基于 `ctex` 宏集，根据各个模板格式，将毕业设计所需文档格式分为两类：
-- `zjutbook` 采用 `ctexbook`
-  - 毕业设计说明书（论文）
-- `zjutreport` 采用 `ctexrep`
-  - 文献综述
-  - 外文翻译
-  - 开题报告
+基于 `ctex` 宏集，根据各个模板格式，将毕业设计所需文档格式分为两大类，`zjutbook` 和 `zjutreport`。
+本模板具体层次结构如下：
+- `zjutbase.sty`: 统一样式
+  - `zjutbook`: 书籍文档类（包含目录、章前分页等）
+    - `毕设论文.tex`
+  - `zjutreport`: 报告文档类（无目录、章节紧凑等）
+    - `文献综述.tex`
+    - `外文翻译.tex`
+    - `开题报告.tex`
 
 ## 快速开始
 
@@ -22,7 +24,7 @@
     > + Ubuntu: `apt-get install texlive-full`
   * MiKTeX
   * MacTeX (只针对 Mac OSX)
-* 确保你的 $\LaTeX$ 环境包含中文环境以及 `ctex` 宏集
+* 确保你的 $\LaTeX$ 环境包含中文环境以及 `ctex` 等宏集
   > + Arch Linux / Manjaro: `pacman -S texlive-langchinese`
   > + Ubuntu: `apt-get install texlive-lang-chinese`
 
@@ -32,6 +34,40 @@
 使用该命令即可在 `./build` 目录下生成 PDF 文件，
 本模板默认持续检测变更、持续生成最新数据。
 默认配置参数可在 `latexmkrc` 中进行修改。
+
+1. 在 `latexmkrc` 修改入口 TeX 文件，以及输出文件名称
+
+   例如对于以下配置，表示对 `毕设论文.tex` 编译且最终输出 `./build/毕设论文.pdf`。
+   ```
+   @default_files = ('毕设论文.tex');
+   $out_dir = "build";
+   $jobname = '毕设论文';
+   ```
+2. 在入口 TeX 文件中
+   1. 选择具体的文档类 `zjutbook` 或 `zjutreport`。
+      ```
+      \documentclass[12pt]{zjutbook}
+      ```
+   2. 指定文档信息
+      ```
+      \zjuttype{本科毕业设计说明书（论文）}
+      \zjutyear{2022}
+      \zjuttitle{不得超过30个汉字，论文题目过长可分两行书写}
+      \zjutauthor{作者姓名}
+      \zjutmentor{教师姓名}
+      \zjutcollege{计算机科学与技术学院、软件学院}
+      \zjutmajor{软件工程}
+      \zjutdate{\number\year 年 \number\month 月 \number\day 日}
+      ```
+   3. 开始写作
+      ```
+      \begin{document}
+      \chapter{绪论}
+      .....
+      \end{document}
+      ```
+3. 在 `bib.bib` 中添加 bibtex 格式的引用
+4. 使用 `latexmk` 命令生成 PDF 文件
 
 ## FAQ
 

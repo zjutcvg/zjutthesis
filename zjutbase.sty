@@ -3,38 +3,7 @@
 
 
 %%%%%%%% 默认字体 %%%%%%%%
-%% Microsoft
 \setmainfont[Mapping=tex-text]{Times New Roman}
-\setsansfont{Arial}
-\setmonofont{Courier New}
-%% Open source Nimbus
-% \setmainfont[Mapping=tex-text]{Nimbus Roman}
-% \setsansfont{Nimbus Sans}
-% \setmonofont{Nimbus Mono PS}
-\setCJKfamilyfont{zhsong}{思源宋体 CN}[
-  AutoFakeSlant = 0.2,
-  BoldItalicFeatures = {FakeSlant = 0.2}
-]
-\setCJKfamilyfont{zhhei}{思源黑体 CN}[
-  AutoFakeSlant = 0.2,
-  BoldItalicFeatures = {FakeSlant = 0.2}
-]
-\setCJKfamilyfont{zhfs}{Adobe Fangsong Std}[
-  AutoFakeBold = 3,
-  AutoFakeSlant = 0.2
-]
-\setCJKfamilyfont{zhkai}{Adobe Kaiti Std}[
-  AutoFakeBold = 3,
-  AutoFakeSlant = 0.2
-]
-\setCJKmainfont{思源宋体 CN}[
-  ItalicFont = Adobe Kaiti Std,
-  BoldFont = 思源黑体 CN-Bold,
-  BoldItalicFont = Adobe Kaiti Std,
-  BoldItalicFeatures = {FakeBold = 3, FakeSlant = 0.2}
-]
-\setCJKsansfont{思源黑体 CN}
-\setCJKmonofont{思源黑体 HW}
 
 
 %%%%%%%% 标题 %%%%%%%%
@@ -114,6 +83,7 @@
 \RequirePackage{makebox}            % 文本框
 \newcommand\zjutpreface{%
 \begin{titlepage}
+  \setstretch{1.2}
   \vspace*{\fill}
   \begin{center}\includegraphics[width=100mm]{zjutname}\end{center}
   \vspace*{\fill}
