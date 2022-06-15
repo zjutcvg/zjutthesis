@@ -1,11 +1,11 @@
 #### Input ####
-@default_files = ('毕设论文.tex');
+@default_files = ('硕士学位论文.tex');
 # 多文件
 # @default_files = ('file-one.tex', 'file-two.tex');
 
 #### Output ####
 $out_dir = "build";
-$jobname = '毕设论文';
+$jobname = '硕士学位论文';
 
 #### Engine ####
 $pdflatex = 'pdflatex -interaction=nonstopmode -shell-escape';

@@ -20,24 +20,24 @@
 % \setcounter{secnumdepth}{3} % 自动编号最大深度 到subsubsection
 % \setcounter{tocdepth}{2} % 目录显示深度到 subsection
 \ctexset{
-  % 1级标题，小二，黑体，居中，加粗，段前段后18磅，1.5倍行距
+  % 1级标题，三号，黑体，居中，加粗，段前段后18磅，1.5倍行距
   chapter = {
     % break = \Needspace{0.5\textheight},
-    format = \zihao{-2}\heiti\bfseries\centering\linespread{1.5},
+    format = \zihao{3}\heiti\bfseries\centering\linespread{1.5},
     beforeskip = {18pt},
     afterskip = {18pt},
     fixskip = true
   },
-  % 2级标题，小三，宋体，加粗，段前12磅，段后6磅，1.5倍行距
+  % 2级标题，四号，宋体，加粗，段前12磅，段后6磅，1.5倍行距
   section = {
-    format = \zihao{-3}\songti\bfseries\linespread{1.5},
+    format = \zihao{4}\heiti\bfseries\linespread{1.5},
     beforeskip = {12pt},
     afterskip = {6pt},
     fixskip = true
   },
-  % 3级标题，四号，宋体，加粗，段前６磅，1.5倍行距
+  % 3级标题，小四，宋体，加粗，段前６磅，1.5倍行距
   subsection = {
-    format = \zihao{4}\songti\bfseries\linespread{1.5},
+    format = \zihao{-4}\heiti\bfseries\linespread{1.5},
     beforeskip = {6pt},
     afterskip = {0pt},
     fixskip = true
@@ -54,7 +54,7 @@
 }{\clearpage}
 
 \newcommand\keywordscn[1]{\vspace{1em}\noindent%
-  {\songti\zihao{-4}\bfseries{关键词：}}\songti\zihao{-4}{#1}%
+  {\heiti\zihao{-4}\textbf{关键词：}}\songti\zihao{-4}{#1}%
 }
 
 %%%%%%%% Abstract Keywords %%%%%%%%
@@ -66,5 +66,5 @@
 }{\clearpage}
 
 \newcommand\keywordsen[1]{\vspace{1em}\noindent%
-  {\zihao{-4}\bfseries{Keywords: }}\songti\zihao{-4}{#1}%
+  {\zihao{-4}\textbf{KEY WORDS: }}\songti\zihao{-4}{#1}%
 }

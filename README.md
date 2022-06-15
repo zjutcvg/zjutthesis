@@ -1,18 +1,7 @@
-# 浙江工业大学计算机学院本科毕业设计模板(非官方)
+# 浙江工业大学计算机学院硕士学位论文模板(非官方)
 
 本 $\LaTeX$ 模板以
-[2018年本科毕业设计说明书（论文）格式模板](http://www.cs.zjut.edu.cn/html/n6092.html)、
-[计算机学院本科毕业设计相关材料模板](http://www.cs.zjut.edu.cn/html/n4388.html)
-等官方模板格式为基础设计。
-基于 `ctex` 宏集，根据各个模板格式，将毕业设计所需文档格式分为两大类，`zjutbook` 和 `zjutreport`。
-本模板具体层次结构如下：
-- `zjutbase.sty`: 统一样式
-  - `zjutbook`: 书籍文档类（包含目录、章前分页等）
-    - `毕设论文.tex`
-  - `zjutreport`: 报告文档类（无目录、章节紧凑等）
-    - `文献综述.tex`
-    - `外文翻译.tex`
-    - `开题报告.tex`
+[硕士学位论文2019年新格式要求](http://www.cs.zjut.edu.cn/html/n6092.html)官方模板格式为基础设计。
 
 ## 快速开始
 
@@ -50,14 +39,16 @@
       ```
    2. 指定文档信息
       ```
-      \zjuttype{本科毕业设计说明书（论文）}
-      \zjutyear{2022}
-      \zjuttitle{不得超过30个汉字，论文题目过长可分两行书写}
-      \zjutauthor{作者姓名}
-      \zjutmentor{教师姓名}
-      \zjutcollege{计算机科学与技术学院、软件学院}
-      \zjutmajor{软件工程}
-      \zjutdate{\number\year 年 \number\month 月 \number\day 日}
+      \zjutTitle
+         {论文中文题目}
+         {Title of Thesis}
+      \zjutAuthor{作者姓名}
+      \zjutMentor{教师姓名}{教  授}
+      \zjutMajor{软件工程}
+      \zjutAcademic{工程硕士} % 工学硕（博）士；专硕：工程硕士
+      \zjutCultiviate{全日制专业学位硕士} % 全日制专业学位硕士/全日制学术型硕(博)士
+      \zjutCollege{计算机科学与技术学院}
+      \zjutDate{2022}{06}    % 夏季06 春季01
       ```
    3. 开始写作
       ```

@@ -4,7 +4,7 @@
 
 %%%%%%%% 默认字体 %%%%%%%%
 \setmainfont[Mapping=tex-text]{Times New Roman}
-
+\setsansfont{Arial}
 
 %%%%%%%% 标题 %%%%%%%%
 \RequirePackage{titlesec}           % 控制标题的宏包
@@ -54,25 +54,33 @@
 
 %%%%%%%% 文档信息 %%%%%%%%
 \usepackage{xstring}      % 正文标题中替换换行
-\DeclareRobustCommand{\filltitle}{}
-\DeclareRobustCommand{\zjuttitle}[1]{%
-  \renewcommand{\filltitle}{#1}%
+\DeclareRobustCommand{\fillType}{浙江工业大学硕士学位论文}
+\DeclareRobustCommand{\zjutType}[1]{\renewcommand{\fillType}{#1}}
+\DeclareRobustCommand{\fillTitleCn}{论文中文题目}
+\DeclareRobustCommand{\fillTitleEn}{Title of Thesis}
+\DeclareRobustCommand{\zjutTitle}[2]{%
+  \renewcommand{\fillTitleCn}{#1}%
+  \renewcommand{\fillTitleEn}{#2}%
   \title{\StrSubstitute{#1}{\\}{}}%
 }
-\DeclareRobustCommand{\filltype}{}
-\DeclareRobustCommand{\zjuttype}[1]{\renewcommand{\filltype}{#1}}
-\DeclareRobustCommand{\fillauthor}{}
-\DeclareRobustCommand{\zjutauthor}[1]{\renewcommand{\fillauthor}{#1}}
-\DeclareRobustCommand{\fillmentor}{}
-\DeclareRobustCommand{\zjutmentor}[1]{\renewcommand{\fillmentor}{#1}}
-\DeclareRobustCommand{\fillmajor}{}
-\DeclareRobustCommand{\zjutmajor}[1]{\renewcommand{\fillmajor}{#1}}
-\DeclareRobustCommand{\fillcollege}{}
-\DeclareRobustCommand{\zjutcollege}[1]{\renewcommand{\fillcollege}{#1}}
-\DeclareRobustCommand{\fillyear}{}
-\DeclareRobustCommand{\zjutyear}[1]{\renewcommand{\fillyear}{#1}}
-\DeclareRobustCommand{\filldate}{}
-\DeclareRobustCommand{\zjutdate}[1]{\renewcommand{\filldate}{#1}}
+\DeclareRobustCommand{\fillAuthor}{作者姓名}
+\DeclareRobustCommand{\zjutAuthor}[1]{\renewcommand{\fillAuthor}{#1}}
+\DeclareRobustCommand{\fillMentor}{指导教师   教  授}
+\DeclareRobustCommand{\zjutMentor}[2]{\renewcommand{\fillMentor}{#1   #2}}
+\DeclareRobustCommand{\fillMajor}{软件工程}
+\DeclareRobustCommand{\zjutMajor}[1]{\renewcommand{\fillMajor}{#1}}
+\DeclareRobustCommand{\fillAcademic}{工程硕士}
+\DeclareRobustCommand{\zjutAcademic}[1]{\renewcommand{\fillAcademic}{#1}}
+\DeclareRobustCommand{\fillCultiviate}{全日制专业学位硕士}
+\DeclareRobustCommand{\zjutCultiviate}[1]{\renewcommand{\fillCultiviate}{#1}}
+\DeclareRobustCommand{\fillCollege}{计算机科学与技术学院}
+\DeclareRobustCommand{\zjutCollege}[1]{\renewcommand{\fillCollege}{#1}}
+\DeclareRobustCommand{\fillYear}{}
+\DeclareRobustCommand{\fillMonth}{}
+\DeclareRobustCommand{\zjutDate}[2]{%
+  \renewcommand{\fillYear}{#1}%
+  \renewcommand{\fillMonth}{#2}%
+}
 
 
 %%%%%%%% 封面 %%%%%%%%
@@ -81,22 +89,31 @@
 \begin{titlepage}
   \setstretch{1.2}
   \vspace*{\fill}
-  \begin{center}\includegraphics[width=100mm]{zjutname}\end{center}
+  \begin{center}
+    \includegraphics[width=25mm]{zjutlogo}
+    \includegraphics[width=90mm]{zjutname}
+  \end{center}
   \vspace*{\fill}
-  \centerline{\zihao{1}{\filltype}}
+  \begin{center}
+    \zihao{0}硕士学位论文
+  \end{center}
   \vspace*{\fill}
-  \centerline{\zihao{-2}\textbf{({\fillyear}届)}}
-  \vspace*{\fill}
-  \begin{center}\includegraphics[width=36mm]{zjutlogo}\end{center}
   \begin{center}
     \renewcommand\arraystretch{2}
+    \begin{tabular}{r{3cm} c{10cm}}
+      \zihao{-2}论文题目 & \zihao{3} \fillTitleCn \\
+    \end{tabular}
+  \end{center}
+  \vspace*{\fill}
+  \begin{center}
+    % \renewcommand\arraystretch{2}
     \begin{tabular}{r c}
-      \zihao{2}论文题目 & \zihao{-2}\UnderlineCentered{8cm}{1.5mm}{\filltitle} \\
-      \zihao{4}作者姓名 & \zihao{4}\uline{\makebox[8cm][c]{\fillauthor}} \\
-      \zihao{4}指导教师 & \zihao{4}\uline{\makebox[8cm][c]{\fillmentor}} \\
-      \zihao{4}学科专业 & \zihao{4}\uline{\makebox[8cm][c]{\fillmajor}} \\
-      \zihao{4}所在学院 & \zihao{4}\uline{\makebox[8cm][c]{\fillcollege}} \\
-      \zihao{4}提交日期 & \zihao{4}\uline{\makebox[8cm][c]{\filldate}} \\
+      \zihao{4}作者姓名 & \zihao{4}\fillAuthor \\
+      \zihao{4}指导教师 & \zihao{4}\fillMentor \\
+      \zihao{4}学科专业 & \zihao{4}\fillMajor \\
+      \zihao{4}学位类型 & \zihao{4}\fillAcademic \\
+      \zihao{4}培养类型 & \zihao{4}\fillCultiviate \\
+      \zihao{4}所在学院 & \zihao{4}\fillCollege \\
     \end{tabular}
   \end{center}
   \vspace*{\fill}
@@ -118,11 +135,11 @@
 \renewcommand{\headrulewidth}{0.8pt}
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyhead[C]{\zihao{-5}\songti{浙江工业大学\filltype}}
+  \fancyhead[C]{\zihao{-5}\songti{浙江工业大学\fillType}}
   \fancyfoot[C]{\zihao{-5}\thepage}
 }
 \fancyhf{}
-\fancyhead[C]{\zihao{-5}\songti{浙江工业大学\filltype}}
+\fancyhead[C]{\zihao{-5}\songti{浙江工业大学\fillType}}
 \fancyfoot[C]{\zihao{-5}\thepage}
 
 
@@ -143,7 +160,7 @@
 
 
 %%%%%%%% 引用格式 %%%%%%%%
-\def\equationautorefname{式}%
+\def\equationautorefname{公式}%
 \def\footnoteautorefname{脚注}%
 \def\itemautorefname{项}%
 \def\figureautorefname{图}%
