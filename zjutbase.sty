@@ -53,8 +53,12 @@
 
 
 %%%%%%%% 文档信息 %%%%%%%%
+\usepackage{xstring}      % 正文标题中替换换行
 \DeclareRobustCommand{\filltitle}{}
-\DeclareRobustCommand{\zjuttitle}[1]{\renewcommand{\filltitle}{#1}}
+\DeclareRobustCommand{\zjuttitle}[1]{%
+  \renewcommand{\filltitle}{#1}%
+  \title{\StrSubstitute{#1}{\\}{}}%
+}
 \DeclareRobustCommand{\filltype}{}
 \DeclareRobustCommand{\zjuttype}[1]{\renewcommand{\filltype}{#1}}
 \DeclareRobustCommand{\fillauthor}{}
@@ -69,14 +73,6 @@
 \DeclareRobustCommand{\zjutyear}[1]{\renewcommand{\fillyear}{#1}}
 \DeclareRobustCommand{\filldate}{}
 \DeclareRobustCommand{\zjutdate}[1]{\renewcommand{\filldate}{#1}}
-\renewcommand{\maketitle}{{%
-  \vspace*{0pt}
-  \begin{center}
-    \zihao{-2}\heiti\bfseries\linespread{1.5}
-    \makeatletter\@title\makeatother
-  \end{center}
-  % \vspace*{12pt}
-}}
 
 
 %%%%%%%% 封面 %%%%%%%%
