@@ -337,12 +337,12 @@
 %%% 目录样式
 \RequirePackage[titles]{tocloft}        % 目录格式
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % 章节虚线
-\renewcommand{\cftdotsep}{1.5}
+\renewcommand{\cftdotsep}{1.5}          % 虚线密度
+\renewcommand{\cftchappagefont}{}       % 页码取消加粗
 \addtolength{\cfttabnumwidth}{1em}
 \addtolength{\cftfignumwidth}{1em}
-% \renewcommand{\cftfigpresnum}{图}
-% \renewcommand{\cfttabpresnum}{表}
-
+\renewcommand{\cftfigpresnum}{图}
+\renewcommand{\cfttabpresnum}{表}
 
 %%%%%%%% 引用格式 %%%%%%%%
 \def\equationautorefname{公式}%
