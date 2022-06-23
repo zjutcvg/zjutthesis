@@ -393,10 +393,10 @@
 \lstset{
   basicstyle=\zihao{5}\ttfamily,
   breaklines, %自动折行
-  numbers=left, %设置行号位置
   keywordstyle=\bfseries, % 设置关键字
   commentstyle=\songti, %设置注释
   % columns=l,
+% numbers=left, %设置行号位置
 % numberstyle=\tiny, %设置行号大小
 % frame=single, %设置边框格式
 % escapeinside=``, %逃逸字符，用于显示中文
