@@ -1,15 +1,15 @@
 #### Input ####
-@default_files = ('硕士学位论文.tex');
+@default_files = ('thesis_example.tex');
 # 多文件
 # @default_files = ('file-one.tex', 'file-two.tex');
 
 #### Output ####
 $out_dir = "build";
-$jobname = '硕士学位论文';
+$jobname = 'thesis_example';
 
 #### Engine ####
 $pdflatex = 'pdflatex -interaction=nonstopmode -shell-escape';
-$xelatex = 'xelatex -file-line-error --shell-escape -src-specials -synctex=1 -interaction=nonstopmode';
+$xelatex = 'xelatex -file-line-error --shell-escape -src-specials -synctex=1 -interaction=nonstopmode -quiet';
 
 #### Produce ####
 $pdf_mode = 5;          # 默认使用 xelatex 引擎
