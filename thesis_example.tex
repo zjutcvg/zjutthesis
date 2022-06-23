@@ -20,8 +20,9 @@
 %%%%%%%% 封面 %%%%%%%%
 \zjutpreface
 %%%%%%%% 中文摘要 %%%%%%%%
+\frontmatter
 \pagenumbering{Roman} % 摘要页码为大写罗马数字
-
+\setcounter{page}{2}
 \begin{AbstractCn}
   摘要的第一段主要阐述选题的意义。
 
@@ -54,7 +55,6 @@
 
 
 %%%%%%%% 目录 %%%%%%%%
-\frontmatter
 \tableofcontents
 \clearpage
 \listoffigures
@@ -207,8 +207,8 @@ $X$ 可以由矩阵 $D$ 中少量的列向量进行线性组合而得到，
     {Class of video streaming}
   \begin{tabular}{|p{.97\textwidth}|}
     \hline
-    类名称：CCameraDS                                                                                        \\
-    功能： 采用 DirectShow 对视频流数据进行处理                                                                         \\
+    类名称：CCameraDS                       \\
+    功能： 采用 DirectShow 对视频流数据进行处理 \\
     \hline
     \begin{lstlisting}[language=C++]
 class CCameraDS

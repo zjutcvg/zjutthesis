@@ -321,6 +321,7 @@
 %%%%%%%% 目录 %%%%%%%%
 \RequirePackage{titletoc}               % 控制目录的宏包
 \RequirePackage[hidelinks]{hyperref}    % 超链接，如目录
+\RequirePackage[nottoc]{tocbibind}      % lof lot 加入 toc
 %%% 双语图表目录
 \captionsetup[figure][bi-first]{name=图}
 \captionsetup[figure][bi-second]{name=Figure}
@@ -343,6 +344,7 @@
 \addtolength{\cftfignumwidth}{1em}
 \renewcommand{\cftfigpresnum}{图}
 \renewcommand{\cfttabpresnum}{表}
+
 
 %%%%%%%% 引用格式 %%%%%%%%
 \def\equationautorefname{公式}%
